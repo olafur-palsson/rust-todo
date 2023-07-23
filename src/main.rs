@@ -8,6 +8,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get(root))
+        .route("/list", get(list))
         .layer(cors);
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
@@ -21,4 +22,8 @@ async fn main() {
 
 async fn root() -> &'static str {
     "Hello, World!"
+}
+
+async fn list() -> &'static str {
+    "<h1>Test</h1>"
 }
