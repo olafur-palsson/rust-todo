@@ -1,8 +1,9 @@
+#![allow(unused_braces)]
 use axum::{routing::get, Router};
-use axum::response::{IntoResponse, Html};
+use axum::response::Html;
 use std::net::SocketAddr;
 use tower_http::cors::{Any, CorsLayer};
-use render::{html};
+use render::html;
 
 mod entities;
 mod components;
@@ -31,10 +32,10 @@ async fn root() -> &'static str {
 }
 
 async fn comp_test() -> Html<String> {
-    let html = html! {
-        <h1>{"Heading"}</h1>
-    };
-    Html(html)
+    let heading = "Heading";
+    Html(html! {
+        <h1>{heading}</h1>
+    })
 }
 
 async fn list() -> &'static str  {
